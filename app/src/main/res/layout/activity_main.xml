@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include layout="@layout/activity_header" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/activity_header" />
 
     <com.islandparadise14.mintable.MinTimeTableView
         android:id="@+id/table"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
