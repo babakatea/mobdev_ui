@@ -4,7 +4,7 @@
     package="com.example.grid">
     <uses-sdk
         android:maxSdkVersion="17"
-        tools:overrideLibrary="com.islandparadise14.mintable"/>
+        tools:overrideLibrary="com.github.tlaabs.timetableview" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +20,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".TaskActivity">
         </activity>
     </application>
 
