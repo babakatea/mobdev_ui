@@ -1,14 +1,12 @@
 package com.example.grid
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import com.islandparadise14.mintable.model.ScheduleDay
-import com.islandparadise14.mintable.model.ScheduleEntity
-import com.islandparadise14.mintable.tableinterface.OnScheduleClickListener
-import com.islandparadise14.mintable.tableinterface.OnScheduleLongClickListener
-import com.islandparadise14.mintable.tableinterface.OnTimeCellClickListener
+import androidx.appcompat.app.AppCompatActivity
+import com.github.tlaabs.timetableview.Schedule
+import com.github.tlaabs.timetableview.Time
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,54 +14,33 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        schedule.setOnClickListener(View.OnClickListener {
-            //do something
+        val schedules = ArrayList<Schedule>()
+        val schedule = Schedule()
+        schedule.classTitle = "Data Structure" // sets subject
+
+        schedule.classPlace = "IT-601" // sets place
+
+        schedule.professorName = "Won Kim" // sets professor
+
+        schedule.startTime = Time(10, 0) // sets the beginning of class time (hour,minute)
+
+        schedule.endTime = Time(13, 30) // sets the end of class time (hour,minute)
+
+        schedules.add(schedule)
+//.. add one or more schedules
+        timetable.add(schedules)
+
+        val taskIntent = Intent(this, TaskActivity::class.java)
+
+
+        timetable.setOnStickerSelectEventListener(object : ProjectTableView.OnStickerSelectedListener {
+            override fun OnStickerSelected(idx: Int, schedules: java.util.ArrayList<Schedule>?){
+                startActivity(taskIntent)
+            }
         })
-
-        table.setOnScheduleClickListener(
-            object : OnScheduleClickListener {
-                override fun scheduleClicked(entity: ScheduleEntity) {
-                    //do something
-                }
-            }
-        )
-
-        table.setOnTimeCellClickListener(object : OnTimeCellClickListener {
-            override fun timeCellClicked(scheduleDay: Int, time: Int) {
-                //do something
-            }
-        })
-
-        table.setOnScheduleLongClickListener(
-            object : OnScheduleLongClickListener {
-                override fun scheduleLongClicked(entity: ScheduleEntity) {
-                    //do something
-                }
-            }
-        )
     }
 
-    private val day = arrayOf("Mon", "Tue", "Wen", "Thu", "Fri")
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        table.initTable(day)
-        table.updateSchedules(scheduleList)
-        scheduleList.add(schedule)
-    }
-
-    private val scheduleList: ArrayList<ScheduleEntity> = ArrayList()
-
-    val schedule = ScheduleEntity(
-        32, //originId
-        "Database", //scheduleName
-        "IT Building 301", //roomInfo
-        ScheduleDay.TUESDAY, //ScheduleDay object (MONDAY ~ SUNDAY)
-        "8:20", //startTime format: "HH:mm"
-        "10:30", //endTime  format: "HH:mm"
-        "#73fcae68", //backgroundColor (optional)
-        "#000000" //textcolor (optional)
-    )
 
 
 }

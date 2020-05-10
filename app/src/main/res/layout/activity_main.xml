@@ -6,11 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.islandparadise14.mintable.MinTimeTableView
-        android:id="@+id/table"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:isFullWidth="true"
-        app:widthPadding="20" />
+        android:layout_height="match_parent">
+
+        <com.example.grid.ProjectTableView
+            android:id="@+id/timetable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:column_count="8"
+            app:row_count="120"
+            tools:ignore="MissingConstraints"
+
+            app:cell_height="50dp"
+            app:side_cell_width="30dp"
+            app:header_title="@array/my_header_title"
+            app:start_time="9"
+            app:header_highlight_color="@color/highlight"
+            app:header_highlight_image="@drawable/ic_kitty"
+            app:header_highlight_image_size="36dp"
+            app:header_highlight_type="image"
+
+
+
+        />
+
+    </HorizontalScrollView >
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
