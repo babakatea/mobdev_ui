@@ -3,11 +3,11 @@ package com.example.grid
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.CalendarView
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_header.*
+import android.view.Menu
+import androidx.appcompat.widget.Toolbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.app_toolbar.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +15,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        initializeToolbar()
+    }
+    // toolbar initializing
+
+    fun initializeToolbar() {
+        // toolbar
+        setSupportActionBar(toolbar as Toolbar?)
 
         // calendar
         val c = Calendar.getInstance()
@@ -30,9 +38,14 @@ class MainActivity : AppCompatActivity() {
             // show dialog
             dpd.show()
         }
-
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    // main body
     private val day = arrayOf("Mon", "Tue", "Wen", "Thu", "Fri")
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -40,7 +53,6 @@ class MainActivity : AppCompatActivity() {
         table.initTable(day)
     }
 
-    // calendar
 
 
 }
