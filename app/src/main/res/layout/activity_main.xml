@@ -9,6 +9,8 @@
     <com.islandparadise14.mintable.MinTimeTableView
         android:id="@+id/table"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:isFullWidth="true"
+        app:widthPadding="20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
