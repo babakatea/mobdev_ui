@@ -19,17 +19,5 @@
             android:layout_centerVertical="true"
             android:entries="@array/monthsList" />
 
-        <ImageView
-            android:id="@+id/calendarButton"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="14dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginRight="14dp"
-            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
-
     </RelativeLayout>
 </androidx.appcompat.widget.Toolbar>

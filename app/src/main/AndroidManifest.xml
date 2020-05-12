@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.grid">
+
     <uses-sdk
         android:maxSdkVersion="17"
         tools:overrideLibrary="com.github.tlaabs.timetableview" />
@@ -14,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:replace="android:theme">
+        <activity
+            android:name=".CreateProjectActivity"
+            android:label="@string/title_activity_create_project"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TaskActivity">
-        </activity>
+        <activity android:name=".TaskActivity"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.widget.Toolbar
 import android.content.Intent
+import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import com.github.tlaabs.timetableview.Schedule
 import com.github.tlaabs.timetableview.Time
 import kotlinx.android.synthetic.main.activity_main.*
@@ -49,32 +52,31 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
     // toolbar initializing
-
     fun initializeToolbar() {
-        // toolbar
         setSupportActionBar(toolbar as Toolbar?)
-
-        // calendar
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-
-        // button click to show DatePickerDialog
-        calendarButton.setOnClickListener {
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{view, year, month, dayOfMonth ->
-                // some action
-            }, year, month, day)
-            // show dialog
-            dpd.show()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId;
+        if (id == R.id.item1) {
+            onCreateProjectButtonClick()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun onCreateProjectButtonClick() {
+        val createProjectIntent = Intent(this, CreateProjectActivity::class.java)
+        startActivity(createProjectIntent)
+    }
+
 }
 
 
