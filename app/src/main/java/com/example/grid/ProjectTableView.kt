@@ -17,6 +17,7 @@ class ProjectTableView : LinearLayout {
     private var rowCount = 0
     private var columnCount = 0
     private var cellHeight = 0
+    private var cellWidth = 0
     private var sideCellWidth = 0
     private lateinit var headerTitle: Array<String>
     private lateinit var stickerColors: Array<String>
@@ -62,6 +63,9 @@ class ProjectTableView : LinearLayout {
             R.styleable.TimetableView_cell_height,
             dp2Px(DEFAULT_CELL_HEIGHT_DP)
         )
+
+        cellWidth = dp2Px(DEFAULT_CELL_WIDTH_DP)
+
         sideCellWidth = a.getDimensionPixelSize(
             R.styleable.TimetableView_side_cell_width,
             dp2Px(DEFAULT_SIDE_CELL_WIDTH_DP)
@@ -296,7 +300,7 @@ class ProjectTableView : LinearLayout {
     private fun createTableHeader() {
         val tableRow = TableRow(kontext)
         tableRow.layoutParams = createTableLayoutParam()
-        for (i in 0 until columnCount) {
+        for (i in 0 until headerTitle.size) {
             val tv = TextView(kontext)
             if (i == 0) {
                 tv.layoutParams = createTableRowParam(sideCellWidth, cellHeight)
@@ -316,22 +320,17 @@ class ProjectTableView : LinearLayout {
     }
 
     private fun createStickerParam(schedule: Schedule): RelativeLayout.LayoutParams {
-        val cell_w = calCellWidth()
         val param =
-            RelativeLayout.LayoutParams(cell_w, calStickerHeightPx(schedule))
+            RelativeLayout.LayoutParams(cellWidth, calStickerHeightPx(schedule))
         param.addRule(RelativeLayout.ALIGN_PARENT_TOP)
         param.addRule(RelativeLayout.ALIGN_PARENT_LEFT)
         param.setMargins(
-            sideCellWidth + cell_w * schedule.day,
+            sideCellWidth + cellWidth * schedule.day,
             calStickerTopPxByTime(schedule.startTime),
             0,
             0
         )
         return param
-    }
-
-    private fun calCellWidth(): Int {
-        return dp2Px(DEFAULT_CELL_WIDTH_DP)
     }
 
     private fun calStickerHeightPx(schedule: Schedule): Int {
@@ -352,7 +351,7 @@ class ProjectTableView : LinearLayout {
     }
 
     private fun createTableRowParam(h_px: Int): TableRow.LayoutParams {
-        return TableRow.LayoutParams(calCellWidth(), h_px)
+        return TableRow.LayoutParams(cellWidth, h_px)
     }
 
     private fun createTableRowParam(w_px: Int, h_px: Int): TableRow.LayoutParams {
@@ -360,12 +359,10 @@ class ProjectTableView : LinearLayout {
     }
 
     private fun getHeaderTime(i: Int): String {
-        val p = (startTime + i) % 24
-        val res = if (p <= 12) p else p - 12
-        return res.toString() + "a"
+        return i.toString()
     }
 
-    private fun onCreateByBuilder(builder: Builder) {
+    fun onCreateByBuilder(builder: Builder) {
         rowCount = builder.rowCount
         columnCount = builder.columnCount
         cellHeight = builder.cellHeight
@@ -381,7 +378,7 @@ class ProjectTableView : LinearLayout {
         fun OnStickerSelected(idx: Int, schedules: ArrayList<Schedule>?)
     }
 
-    internal class Builder(private val context: Context) {
+    class Builder(private val context: Context) {
         var rowCount: Int
         var columnCount: Int
         var cellHeight: Int

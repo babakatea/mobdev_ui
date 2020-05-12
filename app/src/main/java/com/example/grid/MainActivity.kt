@@ -2,6 +2,7 @@ package com.example.grid
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.github.tlaabs.timetableview.Schedule
 import com.github.tlaabs.timetableview.Time
@@ -13,6 +14,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val projectNames = arrayOf("MAP", "MobDev", "SQR")
+        val numDays = 30
+
+        val builder = ProjectTableView.Builder(this)
+        builder.setRowCount(numDays)
+        builder.setHeaderTitle(projectNames)
+        val timetable = builder.build()
+        timetable_scroll.addView(timetable, ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        ))
+
+
 
         val schedules = ArrayList<Schedule>()
         val schedule = Schedule()
