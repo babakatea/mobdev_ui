@@ -16,10 +16,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val projectNames = arrayOf("", "MAP", "MobDev", "SQR", "gpdd", "dfbdktohdkt")
+        val projectNames = arrayOf("", "MAP")
         val numDays = 30
 
         timetable.updateHeaderTitle(projectNames)
+        timetable.updateNumDays(numDays)
 
 //        val builder = ProjectTableView.Builder(timetable_linear.context)
 //        builder.setRowCount(numDays)

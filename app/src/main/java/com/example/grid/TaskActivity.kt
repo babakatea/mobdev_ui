@@ -1,12 +1,13 @@
 package com.example.grid
 
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.View
+import android.widget.DatePicker
 import androidx.appcompat.app.AppCompatActivity
-import com.github.tlaabs.timetableview.Schedule
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_task.*
-import java.util.*
 import java.util.Calendar
+import javax.xml.datatype.DatatypeConstants.MONTHS
 
 class TaskActivity : AppCompatActivity() {
 
@@ -14,12 +15,21 @@ class TaskActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task)
 
-        val calendar : Calendar = Calendar.getInstance()
-        val year = Calendar.YEAR
-        val month = Calendar.MONTH
-        val day = Calendar.DAY_OF_MONTH
+        start_date.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val calendar = Calendar.getInstance()
+                val year = calendar.get(Calendar.YEAR)
+                val month = calendar.get(Calendar.MONTH)
+                val day = calendar.get(Calendar.DAY_OF_MONTH)
 
 
+                DatePickerDialog(this@TaskActivity,
+                    DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                        start_date.setText("$dayOfMonth/$monthOfYear/$year")
+                    }, year, month, day
+                ).show()
+
+            }
+        })
     }
-
 }

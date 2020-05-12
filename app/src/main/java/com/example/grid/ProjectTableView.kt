@@ -1,8 +1,10 @@
 package com.example.grid
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.Point
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
@@ -17,7 +19,6 @@ class ProjectTableView : LinearLayout {
     private var rowCount = 0
     private var columnCount = 0
     private var cellHeight = 0
-    private var cellWidth = 0
     private var sideCellWidth = 0
     private lateinit var headerTitle: Array<String>
     private lateinit var stickerColors: Array<String>
@@ -63,8 +64,6 @@ class ProjectTableView : LinearLayout {
             R.styleable.TimetableView_cell_height,
             dp2Px(DEFAULT_CELL_HEIGHT_DP)
         )
-
-        cellWidth = dp2Px(DEFAULT_CELL_WIDTH_DP)
 
         sideCellWidth = a.getDimensionPixelSize(
             R.styleable.TimetableView_side_cell_width,
@@ -145,6 +144,15 @@ class ProjectTableView : LinearLayout {
     fun updateHeaderTitle(newHeaderTitle: Array<String>) {
         headerTitle = newHeaderTitle
         columnCount = newHeaderTitle.size
+
+        tableHeader!!.removeAllViews()
+        tableBox!!.removeAllViews()
+
+        init()
+    }
+
+    fun updateNumDays(newNumDays: Int) {
+        rowCount = newNumDays
 
         tableHeader!!.removeAllViews()
         tableBox!!.removeAllViews()
@@ -278,6 +286,16 @@ class ProjectTableView : LinearLayout {
         }
     }
 
+    private fun calCellWidth(): Int {
+        val display = (context as Activity).windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        if (size.x - paddingLeft - paddingRight > dp2Px(DEFAULT_CELL_WIDTH_DP) * (columnCount - 1)) {
+            return (size.x - paddingLeft - paddingRight - sideCellWidth) / (columnCount - 1)
+        }
+        return dp2Px(DEFAULT_CELL_WIDTH_DP)
+    }
+
     private fun createTable() {
         createTableHeader()
         for (i in 0 until rowCount) {
@@ -331,11 +349,11 @@ class ProjectTableView : LinearLayout {
 
     private fun createStickerParam(schedule: Schedule): RelativeLayout.LayoutParams {
         val param =
-            RelativeLayout.LayoutParams(cellWidth, calStickerHeightPx(schedule))
+            RelativeLayout.LayoutParams(calCellWidth(), calStickerHeightPx(schedule))
         param.addRule(RelativeLayout.ALIGN_PARENT_TOP)
         param.addRule(RelativeLayout.ALIGN_PARENT_LEFT)
         param.setMargins(
-            sideCellWidth + cellWidth * schedule.day,
+            sideCellWidth + calCellWidth() * schedule.day,
             calStickerTopPxByTime(schedule.startTime),
             0,
             0
@@ -361,7 +379,7 @@ class ProjectTableView : LinearLayout {
     }
 
     private fun createTableRowParam(h_px: Int): TableRow.LayoutParams {
-        return TableRow.LayoutParams(cellWidth, h_px)
+        return TableRow.LayoutParams(calCellWidth(), h_px)
     }
 
     private fun createTableRowParam(w_px: Int, h_px: Int): TableRow.LayoutParams {
@@ -369,7 +387,7 @@ class ProjectTableView : LinearLayout {
     }
 
     private fun getHeaderTime(i: Int): String {
-        return i.toString()
+        return (i + 1).toString()
     }
 
     fun onCreateByBuilder(builder: Builder) {
