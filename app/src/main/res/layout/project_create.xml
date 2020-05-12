@@ -12,7 +12,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:hint="Project title"
+        android:hint="@string/create_project_title_input"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:hint="Project description"
+        android:hint="@string/create_project_description_input"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:hint="Project start date"
+        android:hint="@string/create_project_start_date_input"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,46 +51,67 @@
         android:layout_marginTop="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:hint="Project end date"
+        android:hint="@string/create_project_end_date_input"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_project_start_date_input" />
 
     <EditText
-        android:id="@+id/create_project_color"
+        android:id="@+id/create_project_color_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:hint="Project color"
+        android:hint="@string/create_project_color_input"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_project_end_date_input" />
 
+<!--    <Button-->
+<!--        android:id="@+id/create_project_color_input"-->
+<!--        android:layout_width="155dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:layout_marginLeft="32dp"-->
+<!--        android:text="@string/create_project_color_btn"-->
+<!--        android:onClick="onChooseColorButtonClick"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/create_project_end_date_input" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/create_project_color_result"-->
+<!--        android:layout_width="155dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:layout_marginRight="32dp"-->
+<!--        android:text=""-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/create_project_end_date_input" />-->
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/create_project_cancel_btn"
         android:layout_width="155dp"
         android:layout_height="50dp"
         android:layout_marginTop="64dp"
         android:layout_marginLeft="32dp"
-        android:text="Cancel"
+        android:text="@string/create_project_cancel_btn"
         android:onClick="onCancelButtonClick"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_project_color" />
+        app:layout_constraintTop_toBottomOf="@+id/create_project_color_input" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/create_project_create_btn"
         android:layout_width="139dp"
         android:layout_height="50dp"
         android:layout_marginTop="64dp"
         android:layout_marginRight="32dp"
-        android:text="Create"
-        android:onClick="onCancelButtonClick"
+        android:text="@string/create_project_create_btn"
+        android:onClick="onCreateButtonClick"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_project_color" />
+        app:layout_constraintTop_toBottomOf="@+id/create_project_color_input" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
