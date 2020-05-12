@@ -66,8 +66,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId;
-        if (id == R.id.item1) {
+        if (id == R.id.create_project_btn) {
             onCreateProjectButtonClick()
+        }
+        else if (id == R.id.archived_projects_btn) {
+            // move to archived projects view
         }
         return super.onOptionsItemSelected(item)
     }
