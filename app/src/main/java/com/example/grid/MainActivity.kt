@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.updateLayoutParams
 import com.github.tlaabs.timetableview.Schedule
 import com.github.tlaabs.timetableview.Time
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,17 +16,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val projectNames = arrayOf("MAP", "MobDev", "SQR")
+        val projectNames = arrayOf("", "MAP", "MobDev", "SQR", "gpdd", "dfbdktohdkt")
         val numDays = 30
 
-        val builder = ProjectTableView.Builder(this)
-        builder.setRowCount(numDays)
-        builder.setHeaderTitle(projectNames)
-        val timetable = builder.build()
-        timetable_scroll.addView(timetable, ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        ))
+        timetable.updateHeaderTitle(projectNames)
+
+//        val builder = ProjectTableView.Builder(timetable_linear.context)
+//        builder.setRowCount(numDays)
+//        builder.setHeaderTitle(projectNames)
+//        val timetable = builder.build()
+//        timetable_linear.addView(timetable)
 
 
 

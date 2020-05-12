@@ -19,19 +19,15 @@
             app:column_count="8"
             app:row_count="120"
             tools:ignore="MissingConstraints"
-
+            app:header_title="@array/my_header_title"
             app:cell_height="50dp"
             app:side_cell_width="30dp"
-            app:header_title="@array/my_header_title"
             app:start_time="9"
             app:header_highlight_color="@color/highlight"
             app:header_highlight_image="@drawable/ic_kitty"
             app:header_highlight_image_size="36dp"
             app:header_highlight_type="image"
-
-
-
-<!--        />-->
+        />
 
     </HorizontalScrollView >
 

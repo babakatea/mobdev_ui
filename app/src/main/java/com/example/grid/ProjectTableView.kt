@@ -142,6 +142,16 @@ class ProjectTableView : LinearLayout {
         return allSchedules
     }
 
+    fun updateHeaderTitle(newHeaderTitle: Array<String>) {
+        headerTitle = newHeaderTitle
+        columnCount = newHeaderTitle.size
+
+        tableHeader!!.removeAllViews()
+        tableBox!!.removeAllViews()
+
+        init()
+    }
+
     fun add(schedules: ArrayList<Schedule>) {
         add(schedules, -1)
     }
@@ -300,7 +310,7 @@ class ProjectTableView : LinearLayout {
     private fun createTableHeader() {
         val tableRow = TableRow(kontext)
         tableRow.layoutParams = createTableLayoutParam()
-        for (i in 0 until headerTitle.size) {
+        for (i in 0 until columnCount) {
             val tv = TextView(kontext)
             if (i == 0) {
                 tv.layoutParams = createTableRowParam(sideCellWidth, cellHeight)
@@ -371,6 +381,7 @@ class ProjectTableView : LinearLayout {
         stickerColors = builder.stickerColors
         startTime = builder.startTime
         headerHighlightColor = builder.headerHighlightColor
+
         init()
     }
 
@@ -409,7 +420,7 @@ class ProjectTableView : LinearLayout {
 
         fun setHeaderTitle(titles: Array<String>): Builder {
             headerTitle = titles
-            return this
+            return this.setColumnCount(headerTitle.size)
         }
 
         fun setStickerColors(colors: Array<String>): Builder {
