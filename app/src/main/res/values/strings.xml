@@ -1,19 +1,52 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Project scheduler</string>
-    <string name="save" />
-    <string name="task_name" />
-    <string name="Save">Save</string>
-    <string name="hint">hint</string>
+    <string name="app_name">Grid</string>
+    <string-array name="monthsList">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>Jule</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 
     <string-array name="my_header_title" tools:ignore="InconsistentArrays">
         <item></item>
-        <item>database</item>
-        <item>Pidor</item>
-        <item>Wed</item>
-        <item>Thu</item>
-        <item>Fri</item>
-        <item>Fffwri</item>
-        <item>Ffri</item>
+        <item></item>
     </string-array>
 
+    
+    <string name="title_activity_create_project">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    
+    <!-- Create project view strings -->
+    <string name="create_project_title_input">Project title</string>
+    <string name="create_project_description_input">Project description</string>
+    <string name="create_project_start_date_input">Project start date</string>
+    <string name="create_project_end_date_input">Project end date</string>
+    <string name="create_project_color_input">Project color</string>
+    <string name="create_project_color_btn">Color</string>
+    <string name="create_project_cancel_btn">Cancel</string>
+    <string name="create_project_create_btn">Create</string>
+
 </resources>
+
