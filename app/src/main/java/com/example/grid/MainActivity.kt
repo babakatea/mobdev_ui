@@ -25,41 +25,44 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val projectNames = arrayOf("", "MAP")
-        val numDays = 30
-
-        timetable.updateHeaderTitle(projectNames)
-        timetable.updateNumDays(numDays)
-
-//        val builder = ProjectTableView.Builder(timetable_linear.context)
-//        builder.setRowCount(numDays)
-//        builder.setHeaderTitle(projectNames)
-//        val timetable = builder.build()
-//        timetable_linear.addView(timetable)
-
         // init toolbar
         initializeToolbar()
 
-        // schedule work
+        // Update list of projects
+        val projectNames = arrayOf("", "MAP", "MobDev")
+        timetable.updateHeaderTitle(projectNames)
 
+        // Update number of days in month
+        val numDays = 30
+        timetable.updateNumDays(numDays)
+
+        // Create task
         val schedules = ArrayList<Schedule>()
         val schedule = Schedule()
-        schedule.classTitle = "Data Structure" // sets subject
+        schedule.classTitle = "Data Structure" // sets subject (header of the task)
+        schedule.classPlace = "IT-601" // sets place (can be used as short description)
 
-        schedule.classPlace = "IT-601" // sets place
-
-        schedule.professorName = "Won Kim" // sets professor
-
-        schedule.startTime = Time(10, 0) // sets the beginning of class time (hour,minute)
-
-        schedule.endTime = Time(13, 30) // sets the end of class time (hour,minute)
+        // How to use Time as date?
+        // Pretend like hour is a day
+        // E. g. below you can see task starting at 25 day of month and ending at 28
+        schedule.startTime = Time(25, 0) // sets the beginning of task date (day)
+        schedule.endTime = Time(28, 0) // sets the end of task date (day)
+        schedule.day = 1 // index of project in a list of projects
 
         schedules.add(schedule)
-        //.. add one or more schedules
         timetable.add(schedules)
 
-        val taskIntent = Intent(this, TaskActivity::class.java)
+        // Here is how it possible to get all stickers and their indices
+        // timetable.allSchedulesInStickers
 
+        // Remove task
+        timetable.remove(0)
+
+        schedules.add(schedule)
+        timetable.add(schedules)
+
+
+        val taskIntent = Intent(this, TaskActivity::class.java)
 
         timetable.setOnStickerSelectEventListener(object : ProjectTableView.OnStickerSelectedListener {
             override fun OnStickerSelected(idx: Int, schedules: java.util.ArrayList<Schedule>?){

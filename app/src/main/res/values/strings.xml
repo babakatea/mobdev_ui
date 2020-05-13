@@ -20,7 +20,7 @@
         <item></item>
     </string-array>
 
-    
+
     <string name="title_activity_create_project">Settings</string>
 
     <!-- Preference Titles -->
@@ -47,6 +47,8 @@
     <string name="create_project_color_btn">Color</string>
     <string name="create_project_cancel_btn">Cancel</string>
     <string name="create_project_create_btn">Create</string>
+    <string name="Save">Save</string>
+    <string name="Delete"> Delete</string>
 
 </resources>
 

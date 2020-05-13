@@ -33,14 +33,28 @@
         android:hint="End date"
         android:importantForAutofill="no" />
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:hint="Completed before deadline" />
+
     <Button
         android:id="@+id/save_button"
-        android:layout_width="50dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:text="@string/Save"
         android:onClick="onSaveButtonClick"
         />
 
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="@string/Delete"
+        android:onClick="onDeleteButtonClick"
+        />
 
 </LinearLayout>
