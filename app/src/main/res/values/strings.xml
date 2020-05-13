@@ -48,7 +48,9 @@
     <string name="create_project_cancel_btn">Cancel</string>
     <string name="create_project_create_btn">Create</string>
     <string name="Save">Save</string>
-    <string name="Delete"> Delete</string>
+
+    <string name="Delete">Delete</string>
+    <string name="Cancel">Cancel</string>
 
 </resources>
 

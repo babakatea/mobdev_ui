@@ -93,6 +93,11 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    fun onPlusButtonClick(view: View) {
+        val taskActivityIntent = Intent(this, TaskActivity::class.java)
+        startActivity(taskActivityIntent)
+    }
+
     fun onCreateProjectButtonClick() {
         val createProjectIntent = Intent(this, CreateProjectActivity::class.java)
         startActivity(createProjectIntent)

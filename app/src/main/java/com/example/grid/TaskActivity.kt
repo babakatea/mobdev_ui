@@ -2,6 +2,7 @@ package com.example.grid
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_task.*
 import java.util.Calendar
@@ -39,7 +40,14 @@ class TaskActivity : AppCompatActivity() {
                 }, year, month, day
             ).show()
         }
-
-
     }
+
+    fun onCancelButtonClick(view: View) {
+        this.onBackPressed()
+    }
+
+    fun onCreateTaskButtonClick(view: View) {
+        // implement task creation
+    }
+
 }

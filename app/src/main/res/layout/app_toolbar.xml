@@ -26,6 +26,7 @@
             android:textSize="20dp"
             android:background="@android:color/transparent"
             android:gravity="right"
+            android:onClick="onPlusButtonClick"
             android:text="+" />
 
 

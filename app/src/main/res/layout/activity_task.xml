@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:text="@string/Save"
-        android:onClick="onSaveButtonClick"
+        android:onClick="onCreateTaskButtonClick"
         />
 
     <Button
@@ -53,8 +53,8 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:text="@string/Delete"
-        android:onClick="onDeleteButtonClick"
+        android:text="@string/Cancel"
+        android:onClick="onCancelButtonClick"
         />
 
 </LinearLayout>
