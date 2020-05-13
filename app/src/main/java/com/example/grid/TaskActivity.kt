@@ -47,7 +47,7 @@ class TaskActivity : AppCompatActivity() {
     }
 
     fun onCreateTaskButtonClick(view: View) {
-        // implement task creation
+        // TODO: implement task creation
     }
 
 }

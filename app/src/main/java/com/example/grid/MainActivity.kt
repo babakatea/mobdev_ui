@@ -1,8 +1,6 @@
 package com.example.grid
 
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updateLayoutParams
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.Menu
@@ -88,7 +86,8 @@ class MainActivity : AppCompatActivity() {
             onCreateProjectButtonClick()
         }
         else if (id == R.id.archived_projects_btn) {
-            // move to archived projects view
+            // TODO: move to archived projects view
+
         }
         return super.onOptionsItemSelected(item)
     }
